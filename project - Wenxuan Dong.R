@@ -11,8 +11,8 @@ library(stringr)
 library(dplyr)
 
 #Load csv
-pet <- read.csv("C:/Users/14221/Desktop/Seattle_Pet_Licenses.csv")
-zipcode <- read.csv("C:/Users/14221/Desktop/usa_zipcode_of_wa-1564j.csv")
+pet <- read.csv("Seattle_Pet_Licenses.csv")
+zipcode <- read.csv("usa_zipcode_of_wa-1564j.csv")
 
 #Proceed csv
 zipcode$ZIP.Code <- as.numeric(as.character(zipcode$ZIP.Code))
