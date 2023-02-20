@@ -72,20 +72,23 @@ Our analysis and final product could help educate people on the relationship bet
 We pick the data of pet licenses and the pet owner information from the state government and there might be some pets not registered in Seattle. So the data has limitations in showing the type and number of the pet. Also, the license needs to renew for a certain period. So we can not know if the person changes pet or loses a pet, so the data is not so up-to-date in short term. Also, we pick two datasets, one is about pets and another is about the income of people. Mixing those two datasets and analyze accurately together is a challenge. We also plan to create a 2D data visualization on our website to show the data. Changing those data and processing them into charts and pictures on a website needs a huge amount of code and knowledge of coding more than we learned in this course. This could be a challenging task for us.
 
 ### Summary Information
-
-Write a summary paragraph of findings that includes the 5 values calculated from your summary information R script
-
+The following is a summary for both the pet and zip code data frames:
+```{r echo=FALSE, include=FALSE}
+source("summary.R")
+```
+`r paste("Pet Summary:\n")`
+`r paste(names(pet_summary), ": ", unlist(pet_summary), "\n\n", sep = "")`
+`r paste("Zipcode Summary:\n")`
+`r paste(names(zipcode_summary), ": ", unlist(zipcode_summary), "\n\n", sep = "")`
 
 ### Table
 
-Include a table of aggregate information
-
-``````{r, echo = FALSE, code = readLines("tables.R")}
-knitr:kable(agg_table)
+```{r, echo = FALSE, include=FALSE}
+source("tables.R")
 ```
-Describe why you included the table and what information it reveals:
+`r kable(summarized_table)`
 
-The joined table includes only the necessary information from both of the tables. ZIP Code was the obvious join for this table as it resides in each of the dataset and can be easily joined once both variables are of the same type. Instead of taking two entire columns for the city and state can be combined and the Zip Code, the state abbreviation should not be necessary either as the data is comprised of Washington residents alone. The information this table gives us is a direct link to our goal, the city of Seattle and the population density of pets in the area. Through most of this data, we can see while it includes pigs and goats, they are not prevalent/popular pets in the Seattle-aea.
+The joined table includes only the necessary information from both of the tables. ZIP Code was the obvious join for this table as it resides in each of the data set and can be easily joined once both variables are of the same type. Instead of taking two entire columns for the city and state can be combined and the Zip Code, the state abbreviation should not be necessary either as the data is comprised of Washington residents alone. The information this table gives us is a direct link to our goal, the city of Seattle and the population density of pets in the area. Through most of this data, we can see while it includes pigs and goats, they are not prevalent/popular pets in the Seattle-area. From this table, the rest of the counties in Washington are also removed along with all of the cities in the same county as Seattle, this one county is King County. The Zip Codes in this specific portion of King County range from 98101 to 98199.
 
 ### Chart 1
 
@@ -95,7 +98,7 @@ Describe why you chose this chart and what information it reveals
 
 Here's an example of how to run an R script inside an RMarkdown file:
 
-``````{r, echo = FALSE, code = readLines("chart1_example.R")}
+```{r, echo = FALSE, code = readLines("chart1_example.R")}
 ```
 
 ### Chart 2
