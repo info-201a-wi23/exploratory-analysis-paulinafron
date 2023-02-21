@@ -1,4 +1,5 @@
 #load-packages
+library(knitr)
 library(tidyverse)
 library(openintro)
 library(GGally)
