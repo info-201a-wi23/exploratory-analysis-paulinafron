@@ -126,7 +126,12 @@ For the trend of the pet species in location, I add a csv file from https://www.
 I also noticed and try to find the special species. They are weighted so less in the plot 6 so I made plot 5 to find where are they raised. It shows that they are all raised in King county, and there is more goats than pigs. Also, from plot 2 we see that lisence for goat and pig are all given in 21 and 22. It is clear that working and studying at home makes people have a lot free time to do the things they want.
 =======
 Include a chart
-
+```{r, echo = FALSE, warning = FALSE, message = FALSE}
+source("chart_3.R")
+p1
+p2
+p3
+``
 
 
 Describe why you chose this chart and what information it reveals
