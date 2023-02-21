@@ -55,17 +55,17 @@ pet_special <- pet %>%
   filter(str_detect(Species, "Goat|Pig"))
 
 #chart3_plot1.R, What about relationship between species and licence issue date?
-ggplot(data=pet_species, 
+p1 <- ggplot(data=pet_species, 
        mapping=aes(x = Species, fill=License.Issue.Date)) + 
   geom_bar(position="fill")  + ggtitle("Plot of species that lisence issued for different years")
 
 #chart3_plot2.R, Why combine 2015-2020?"
 slices <- c(nrow(pet_year1), nrow(pet_year2), nrow(pet_year3), nrow(pet_year4))
 lbls <- c("2015-2020", "2021", "2022", "2023")
-pie(slices, labels = lbls, main="Pie chart of Lisences", radius = 1, col = rainbow(4))
+p2 <- pie(slices, labels = lbls, main="Pie chart of Lisences", radius = 1, col = rainbow(4))
 
 #chart3_plot3.R, What about the counties?
-ggplot(data=pet, 
+p3 <- ggplot(data=pet, 
        mapping=aes(x = County.Name, fill=Species)) + 
   geom_bar(position="fill")  + ggtitle("Plot of species that lisence issued for counties")
 
