@@ -92,30 +92,34 @@ The joined table includes only the necessary information from both of the tables
 
 ### Chart 1
 
-Include a chart
+We chose to display the number of pet licenses and median household income on a map to better visualize the spatial distribution of those two variables and to see if there is a spatial correlation between pet ownership and income level. The data is colored by the county with each color representing a different county in Washington State. 
 
-Describe why you chose this chart and what information it reveals
+By mapping the number of pet licenses, we can see which areas have a higher concentration of pet owners. The map reveals that the highest count of pet licenses is in Seattle, in King County. Furthermore, mapping the median household income shows which areas have higher or lower income levels. We can see the bubbles with the median income are the largest around Seattle and surrounding areas. However, the two maps suggest there might not be any correlation between number of pet licenses and median household income. The number of pet licenses is generally quite small in other counties of Washington which is not the case with the median household which tends to be quite high outside of Seattle as well. Nevertheless, this might suggest some other trends such as people are more likely to be pet owners, or officially register their pets, in King County than in other parts of Washington.
 
-Here's an example of how to run an R script inside an RMarkdown file:
 
-```{r, echo = FALSE, code = readLines("chart1_example.R")}
+```{r, echo = FALSE, warning = FALSE, message = FALSE}
+source("Chart_1.R")
+Chart_1
+Chart_2
 ```
 
 ### Chart 2
 
-Include a chart
+The purpose of this chart is to show how the amount of pet licenses issued has changed over time, in this case a scatter plot was used to show how the amounts change every day, and then use a loess line of best fit to make it clear what the general trend is
 
-Describe why you chose this chart and what information it reveals
+The Loess line of best fit shows that there was a significant increase in pet licenses in 2021, with a peak in about June, then a decrease towards the last months of 2021. It then increased again when 2022 started, with a peak in late 2022, and a slight decrease before the dataset ends in January 2023. This could suggest that there are times in the year where people get more pets, in this case around the middle of the year, in the summer or fall. It also shows a general upward trend, so more licenses are being given on each day as time passes. This may be due to COVID lockdown preventing people from getting pets, people being worried of getting COVID from getting a new pet, or reduced job security during COVID limiting the money available for getting a pet license, and as the pandemic has subsided over time, people are starting to register pets again. It is also possible that there is missing data, since there isn’t much data for 2015, 2016, 2017, and nothing for 2018. Another thing to note is that the pet license amounts are similar in 2019 and 2020, which could be due to lost data, or could show that there was not much demand for pets even before COVID, but the pandemic made many people want pets again.
+
+```{r, echo = FALSE, warning = FALSE, message = FALSE}
+source("DataViz2.R")
+ggplot(data = dates_grouped, aes(x = License.Issue.Date, y = Number.of.Licenses.Issued)) +
+  geom_point(aes(color = "red")) +
+  geom_smooth(method = "loess") +
+  theme(legend.position="none")
+```
 
 ### Chart 3
 
-Include a chart
-
-
-
-Describe why you chose this chart and what information it reveals
-
-I choose barplots to study the trend of species that lisence issued in Seattle area. I use the bar plot so that I can clearly see how many changes between the species from year to year through the visualization. 
+I chose barplots to study the trend of species that lisence issued in Seattle area. I use the bar plot so that I can clearly see how many changes between the species from year to year through the visualization. 
 I divided year 2015 to 2023 into 4 parts, the first part is 2015-2020, the second part is 2021, the third part is 2022 and the fourth part is 2023. I divide the data into those four part because there is few poeple having a pet lisence from 2015 to 2020, see plot 3 in my charts. So I combine all the lisence issued from 2015 to 2020. 
 For the trend of the pet species in time, due to what I got from the plot 1 in my visualization, I think there is no huge changes from 2015 to 2023. The ratio of dog and cat as a pet is always 7:3, which means there is 70% people who like to raise dog as a pet and 30% people who like to raise cat as a pet. So from what I learnt, people generally would like to have a dog as a pet than as a cat, ignoring some special cases such as having a pig or goat as a pet. From plot 2, I noticed the most pet lisences are issued in 2021 and 2022, I think that is because covid and people need more emotional support.
 For the trend of the pet species in location, I add a csv file from https://www.downloadexcelfiles.com/us_en/download-list-zip-codes-washington-state#.Y_QW3ybMJPY in order to know the counties of each zip code, see plot 4. From the chart, I leartnt that in counties like Chelan, Columbia and Ferry, people tend to raise dog while in Skagit, people tend to raise cat. One thing need to notice that there is an error in the data set. Some rows leaves blank in the information about zip code while others shown N/A meaning there is no information about the zip code of the lisence.

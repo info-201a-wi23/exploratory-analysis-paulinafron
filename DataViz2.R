@@ -26,4 +26,5 @@ dates_grouped <- pet_data %>% group_by(License.Issue.Date) %>% summarise(Number.
 
 ggplot(data = dates_grouped, aes(x = License.Issue.Date, y = Number.of.Licenses.Issued)) +
   geom_point(aes(color = "red")) +
-  geom_smooth(method = "loess")
+  geom_smooth(method = "loess") +
+  theme(legend.position="none")

@@ -6,6 +6,9 @@ library(dplyr)
 library(ggplot2)
 library(viridis)
 library(hrbrthemes)
+library(knitr)
+library(gridExtra)
+library(stringr)
 
 
 # Load files
@@ -37,7 +40,7 @@ state_shape <- map_data("state", region = "washington")
 
 
 # Plot the count of pet licenses
-ggplot(data = state_shape) + 
+  Chart_1 <- ggplot(data = state_shape) + 
   geom_polygon(aes(x = long,
                    y = lat,
                    group = group)) +
@@ -48,14 +51,14 @@ ggplot(data = state_shape) +
   scale_fill_viridis(discrete=TRUE, option="A") +
   ggtitle("Number of pet licenses") +
   theme_ipsum() +
-  theme(legend.position="right") +
+  theme(legend.position="none") +
+    guides(count=FALSE) +
   ylab("Latitude") +
   xlab("Longitude") +
-  theme(legend.position = "none") +
   coord_map()
 
 # Plot median household income
-ggplot(data = state_shape) + 
+Chart_2 <- ggplot(data = state_shape) + 
   geom_polygon(aes(x = long,
                    y = lat,
                    group = group)) +
@@ -66,9 +69,9 @@ ggplot(data = state_shape) +
   scale_fill_viridis(discrete=TRUE, option="A") +
   ggtitle("Median household income") +
   theme_ipsum() +
-  theme(legend.position="right") +
+  theme(legend.position="none") +
+  guides(count=FALSE) +
   ylab("Latitude") +
   xlab("Longitude") +
-  theme(legend.position = "none") +
   coord_map()
 
