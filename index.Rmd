@@ -118,6 +118,10 @@ ggplot(data = dates_grouped, aes(x = License.Issue.Date, y = Number.of.Licenses.
 
 ### Chart 3
 
+The purpose of this chart is to show how the amount of pet licenses issued has changed over time, in this case a scatter plot was used to show how the amounts change every day, and then use a loess line of best fit to make it clear what the general trend is
+
+The Loess l
+
 I choose barplots to study the trend of species that lisence issued in Seattle area. I use the bar plot so that I can clearly see how many changes between the species from year to year through the visualization.  
 
 I divided year 2015 to 2023 into 4 parts, the first part is 2015-2020, the second part is 2021, the third part is 2022 and the fourth part is 2023. I divide the data into those four part because there is few poeple having a pet lisence from 2015 to 2020, see plot 2 in my charts. So I combine all the lisence issued from 2015 to 2020. 
