@@ -54,35 +54,21 @@ pet_special <- pet %>%
   select(County.Name, Species) %>%
   filter(str_detect(Species, "Goat|Pig"))
 
-#chart3_plot1.R, What about relationship between licence issue date and species?
-ggplot(data=pet_species, 
-       mapping=aes(x = License.Issue.Date, fill=Species)) + 
-  geom_bar(position="fill") + ggtitle("Plot of species that lisence issued for different years")
-
-#chart3_plot2.R, What about relationship between species and licence issue date?
+#chart3_plot1.R, What about relationship between species and licence issue date?
 ggplot(data=pet_species, 
        mapping=aes(x = Species, fill=License.Issue.Date)) + 
   geom_bar(position="fill")  + ggtitle("Plot of species that lisence issued for different years")
 
-#chart3_plot3.R, Why combine 2015-2020?"
+#chart3_plot2.R, Why combine 2015-2020?"
 slices <- c(nrow(pet_year1), nrow(pet_year2), nrow(pet_year3), nrow(pet_year4))
 lbls <- c("2015-2020", "2021", "2022", "2023")
 pie(slices, labels = lbls, main="Pie chart of Lisences", radius = 1, col = rainbow(4))
 
-
-#chart3_plot4.R, What about the counties?
+#chart3_plot3.R, What about the counties?
 ggplot(data=pet, 
        mapping=aes(x = County.Name, fill=Species)) + 
   geom_bar(position="fill")  + ggtitle("Plot of species that lisence issued for counties")
 
-#chart3_plot5 and 6.R, Where is the other species?
-ggplot(data=pet_special, 
-       mapping=aes(x = County.Name, fill=Species)) + 
-  geom_bar(position="fill")  + ggtitle("Plot of species that lisence issued for special species")
-
-slices <- c(nrow(pet_special), nrow(pet_dog), nrow(pet_cat))
-lbls <- c("Goat and Pig", "Dog", "Cat")
-pie(slices, labels = lbls, main="Pie chart of species", radius = 1, col = rainbow(3))
 
 #Extra: Creating a map about species using zip code
 
