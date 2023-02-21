@@ -40,6 +40,8 @@ pet_year4 <- pet %>%
 pet_year4 <- pet_year4 %>%
   mutate(License.Issue.Date = "2023")
 
+pet_species <- rbind(pet_year1 , pet_year2, pet_year3, pet_year4)
+
 pet_dog <- pet %>% 
   select(County.Name, Species) %>%
   filter(str_detect(Species, "Dog"))
@@ -55,37 +57,74 @@ pet_special <- pet %>%
 #chart3_plot1.R, What about relationship between licence issue date and species?
 ggplot(data=pet_species, 
        mapping=aes(x = License.Issue.Date, fill=Species)) + 
-  geom_bar(position="fill")
+  geom_bar(position="fill") + ggtitle("Plot of species that lisence issued for different years")
 
 #chart3_plot2.R, What about relationship between species and licence issue date?
 ggplot(data=pet_species, 
        mapping=aes(x = Species, fill=License.Issue.Date)) + 
-  geom_bar(position="fill")
+  geom_bar(position="fill")  + ggtitle("Plot of species that lisence issued for different years")
 
 #chart3_plot3.R, Why combine 2015-2020?"
 slices <- c(nrow(pet_year1), nrow(pet_year2), nrow(pet_year3), nrow(pet_year4))
 lbls <- c("2015-2020", "2021", "2022", "2023")
 pie(slices, labels = lbls, main="Pie chart of Lisences", radius = 1, col = rainbow(4))
 
+
 #chart3_plot4.R, What about the counties?
 ggplot(data=pet, 
        mapping=aes(x = County.Name, fill=Species)) + 
-  geom_bar(position="fill")
+  geom_bar(position="fill")  + ggtitle("Plot of species that lisence issued for counties")
 
-#chart3_plot4 and 5.R, Where is the other species?
+#chart3_plot5 and 6.R, Where is the other species?
 ggplot(data=pet_special, 
        mapping=aes(x = County.Name, fill=Species)) + 
-  geom_bar(position="fill")
+  geom_bar(position="fill")  + ggtitle("Plot of species that lisence issued for special species")
 
 slices <- c(nrow(pet_special), nrow(pet_dog), nrow(pet_cat))
 lbls <- c("Goat and Pig", "Dog", "Cat")
-pie(slices, labels = lbls, main="Pie chart of Lisences", radius = 1, col = rainbow(3))
+pie(slices, labels = lbls, main="Pie chart of species", radius = 1, col = rainbow(3))
 
 #Extra: Creating a map about species using zip code
-pet_all_zip <- pet %>% 
+
+"
+pet_year1_zip <- pet %>% 
+  select(License.Issue.Date, Species) %>%
+  filter(str_detect(License.Issue.Date, "2015|2016|2017|2018|2019|2020"))
+pet_year1 <- pet_year1 %>%
+  mutate(License.Issue.Date = "2015-2020")
+pet_year2 <- pet %>% 
+  select(License.Issue.Date, Species) %>%
+  filter(str_detect(License.Issue.Date, "2021"))
+pet_year2 <- pet_year2 %>%
+  mutate(License.Issue.Date = "2021")
+pet_year3 <- pet %>% 
+  select(License.Issue.Date, Species) %>%
+  filter(str_detect(License.Issue.Date, "2022"))
+pet_year3 <- pet_year3 %>%
+  mutate(License.Issue.Date = "2022")
+pet_year4 <- pet %>% 
+  select(License.Issue.Date, Species) %>%
+  filter(str_detect(License.Issue.Date, "2023"))
+pet_year4 <- pet_year4 %>%
+  mutate(License.Issue.Date = "2023")
+
+pet_all_zip_2015to2020 <- pet %>% 
   select(ZIP.Code, Species, County.Name) %>%
   filter(str_detect(Species, "Dog|Cat|Goat|Pig"))
+
+pet_all_zip_2021 <- pet %>% 
+  select(ZIP.Code, Species, County.Name) %>%
+  filter(str_detect(Species, "Dog|Cat|Goat|Pig"))
+
+pet_all_zip_2022 <- pet %>% 
+  select(ZIP.Code, Species, County.Name) %>%
+  filter(str_detect(Species, "Dog|Cat|Goat|Pig"))
+
+pet_all_zip_2023 <- pet %>% 
+  select(ZIP.Code, Species, County.Name) %>%
+  filter(str_detect(Species, "Dog|Cat|Goat|Pig"))
+"
 #Generating csv
-write.csv(pet_all_zip, "C:/XXX/XXX/XXX/pet_all_zip.csv", row.names=FALSE)
+#write.csv(pet_all_zip, "C:/XXX/XXX/XXX/pet_all_zip.csv", row.names=FALSE)
 #Link:
 #https://www.datawrapper.de/_/LBbCg/
