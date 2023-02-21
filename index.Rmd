@@ -118,7 +118,7 @@ ggplot(data = dates_grouped, aes(x = License.Issue.Date, y = Number.of.Licenses.
 
 ### Chart 3
 
-I choose barplots to study the trend of species that lisence issued in Seattle area. I use the bar plot so that I can clearly see how many changes between the species from year to year through the visualization. 
+I choose barplots to study the trend of species that lisence issued in Seattle area. I use the bar plot so that I can clearly see how many changes between the species from year to year through the visualization.  
 
 I divided year 2015 to 2023 into 4 parts, the first part is 2015-2020, the second part is 2021, the third part is 2022 and the fourth part is 2023. I divide the data into those four part because there is few poeple having a pet lisence from 2015 to 2020, see plot 2 in my charts. So I combine all the lisence issued from 2015 to 2020. 
 For the trend of the pet species in time, due to what I got from the plot 1 in my visualization, I think there is no huge changes from 2015 to 2023. The ratio of dog and cat as a pet is always 7:3, which means there is 70% people who like to raise dog as a pet and 30% people who like to raise cat as a pet. So from what I learnt, people generally would like to have a dog as a pet than as a cat, ignoring some special cases such as having a pig or goat as a pet. From plot 1, I noticed the most pet lisences are issued in 2021 and 2022, I think that is because covid and people need more emotional support.
