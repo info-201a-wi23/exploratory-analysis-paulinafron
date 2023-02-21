@@ -131,7 +131,7 @@ source("chart_3.R")
 p1
 p2
 p3
-``
+```
 
 
 Describe why you chose this chart and what information it reveals
